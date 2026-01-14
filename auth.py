@@ -2,7 +2,7 @@ from user import User
 from utils import *
 
 class authManager():
-    def register():
+    def register(self):
         users = load_users()
 
         id = input("Enter your ID (14 Digits): ")
@@ -10,7 +10,7 @@ class authManager():
             print("Invalid ID")
             return 
         
-        if any(u['ID'] == id for u in users):
+        if any(u['id'] == id for u in users):
             print("ID already exists")
             return
         
@@ -39,7 +39,7 @@ class authManager():
             fname=input("Enter your first name: "),
             lname=input("Enter your last name: "),
             email=email,
-            password_hash=password,
+            password_hash=hash_password(password),
             mobile=phone_num,
             status="active",
             role="user"
@@ -48,7 +48,7 @@ class authManager():
         save_users(users)
         print("Regestration Successful")
 
-    def login():
+    def login(self):
         users = load_users()
         email = input("Email: ")
         password = input("Password: ")
@@ -61,5 +61,5 @@ class authManager():
                 if u["password_hash"] == hash_password(password):
                     print("login successful")
                     return User(**u)
-            print("user not found")
-            return 
+        print("user not found")
+        return 
