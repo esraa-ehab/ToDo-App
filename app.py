@@ -1,0 +1,36 @@
+import tkinter as tk
+from ui.login_ui import loginScreen
+from ui.dashboard_ui import dashboardScreen
+from ui.profile_ui import profileScreen
+from ui.registration_ui import registrationScreen
+
+
+class App(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.title("To-Do App")
+        self.geometry("500x500")
+        self.configure(bg="#ffe6f0")
+        self.current_user = None
+        self.show_login()
+
+    def clear_screen(self):
+        for widget in self.winfo_children():
+            widget.destroy()
+
+    def show_login(self):
+        self.clear_screen()
+        loginScreen(self).pack(expand=True)
+
+    def show_dashboard(self, user):
+        self.current_user = user
+        self.clear_screen()
+        dashboardScreen(self, user).pack(expand=True)
+
+    def show_profile(self, user):
+        self.clear_screen()
+        profileScreen(self, user).pack(expand=True)
+
+    def show_registration(self):
+        self.clear_screen()
+        registrationScreen(self).pack(expand=True)
