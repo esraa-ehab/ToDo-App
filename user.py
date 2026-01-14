@@ -2,13 +2,13 @@ import regex as re
 class User:
     def __init__(self, id, fname, lname, email, password_hash, mobile, status="inactive", role="user"):
         self.id = id
-        self.fname = fname,
-        self.lname = lname,
-        self.email = email,
-        self.password_hash = password_hash,
-        self.mobile = mobile,
-        self.status = status,
-        self.role = role,
+        self.fname = fname
+        self.lname = lname
+        self.email = email
+        self.password_hash = password_hash
+        self.mobile = mobile
+        self.status = status
+        self.role = role
 
     def check_password(self, password, hash_func):
         pattern = r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[_@$])[A-Za-z\d_@$]{8,}$"
@@ -18,9 +18,9 @@ class User:
         if fname:
             self.fname = fname
         if lname:
-            self.fname = fname
+            self.lname = lname
         if mobile:
-            self.mobile
+            self.mobile = mobile
 
     def user_to_dict(self):
         return {
@@ -29,7 +29,7 @@ class User:
             "lname": self.lname,
             "email": self.email,
             "password_hash": self.password_hash,
-            "mobile": self.mobile_n,
+            "mobile": self.mobile,
             "status": self.status,
             "role": self.role
         }
