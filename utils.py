@@ -21,9 +21,9 @@ def save_users(users):
     with open(user_file, "w") as f:
         json.dump(users, f, indent=4)
 
-def load_users(users):
+def load_users():
     try:
         with open(user_file, "r") as f:
-            json.load(f)
+            return json.load(f)
     except FileNotFoundError:
-        return {}
+        return []
