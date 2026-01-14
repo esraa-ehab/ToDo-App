@@ -17,11 +17,11 @@ def valid_egyptian_phone(phone):
 def valid_id(id_number):
     return id_number.isdigit() and len(id_number) == 14
 
-def save_user(users):
+def save_users(users):
     with open(user_file, "w") as f:
         json.dump(users, f, indent=4)
 
-def load_user(users):
+def load_users(users):
     try:
         with open(user_file, "r") as f:
             json.load(f)
