@@ -1,5 +1,5 @@
 import regex as re
-class user:
+class User:
     def __init__(self, id, fname, lname, email, password_hash, mobile_n, status="inactive", role="user"):
         self.id = id
         self.fname = fname,
