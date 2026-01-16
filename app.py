@@ -3,6 +3,9 @@ from ui.login_ui import loginScreen
 from ui.dashboard_ui import dashboardScreen
 from ui.profile_ui import profileScreen
 from ui.registration_ui import registrationScreen
+from ui.tasks_ui import taskDashboard
+from ui.add_task_ui import addTaskScreen
+from ui.edit_task_ui import editTaskScreen
 
 
 class App(tk.Tk):
@@ -34,3 +37,16 @@ class App(tk.Tk):
     def show_registration(self):
         self.clear_screen()
         registrationScreen(self).pack(expand=True)
+
+    def show_tasks(self):
+        self.clear_screen()
+        taskDashboard(self, self.current_user).pack(expand=True)
+
+    
+    def show_add_task(self):
+        self.clear_screen()
+        addTaskScreen(self, self.current_user).pack(expand=True)
+
+    def show_edit_task(self, task):
+        self.clear_screen()
+        editTaskScreen(self, self.current_user, task).pack(expand=True)
