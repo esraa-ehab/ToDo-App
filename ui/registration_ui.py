@@ -25,33 +25,33 @@ class registrationScreen(tk.Frame):
             fg=THEME_TEXT,
         ).pack(pady=(0, 24))
 
-        tk.Label(self, text="ID Number", bg=THEME_BG, fg=THEME_TEXT).pack(anchor="w")
-        self.id_entry = tk.Entry(self, width=32, bg="white", fg=THEME_TEXT, relief="flat")
-        self.id_entry.pack()
+        tk.Label(self, text="ID Number", bg=THEME_BG, fg=THEME_TEXT, font=("Arial", 10)).pack(anchor="w")
+        self.id_entry = tk.Entry(self, width=32, bg="white", fg=THEME_TEXT, insertbackground="black", relief="flat", bd=0, highlightthickness=0, font=("Arial", 10))
+        self.id_entry.pack(pady=6, ipady=6)
 
-        tk.Label(self, text="First Name", bg=THEME_BG, fg=THEME_TEXT).pack(anchor="w")
-        self.fname_entry = tk.Entry(self, width=32, bg="white", fg=THEME_TEXT, relief="flat")
-        self.fname_entry.pack(anchor="w", pady=6, fill="x")
+        tk.Label(self, text="First Name", bg=THEME_BG, fg=THEME_TEXT, font=("Arial", 10)).pack(anchor="w")
+        self.fname_entry = tk.Entry(self, width=32, bg="white", fg=THEME_TEXT, insertbackground="black", relief="flat", bd=0, highlightthickness=0, font=("Arial", 10))
+        self.fname_entry.pack(anchor="w", pady=6, fill="x", ipady=6)
 
-        tk.Label(self, text="Last Name",bg=THEME_BG, fg=THEME_TEXT).pack(anchor="w")
-        self.lname_entry = tk.Entry(self, width=32, bg="white", fg=THEME_TEXT, relief="flat")
-        self.lname_entry.pack(anchor="w", pady=6, fill="x")
+        tk.Label(self, text="Last Name",bg=THEME_BG, fg=THEME_TEXT, font=("Arial", 10)).pack(anchor="w")
+        self.lname_entry = tk.Entry(self, width=32, bg="white", fg=THEME_TEXT, insertbackground="black", relief="flat", bd=0, highlightthickness=0, font=("Arial", 10))
+        self.lname_entry.pack(anchor="w", pady=6, fill="x", ipady=6)
 
-        tk.Label(self, text="Email",bg=THEME_BG, fg=THEME_TEXT).pack(anchor="w")
-        self.email_entry = tk.Entry(self, width=32, bg="white", fg=THEME_TEXT, relief="flat")
-        self.email_entry.pack(anchor="w", pady=6, fill="x")
+        tk.Label(self, text="Email",bg=THEME_BG, fg=THEME_TEXT, font=("Arial", 10)).pack(anchor="w")
+        self.email_entry = tk.Entry(self, width=32, bg="white", fg=THEME_TEXT, insertbackground="black", relief="flat", bd=0, highlightthickness=0, font=("Arial", 10))
+        self.email_entry.pack(anchor="w", pady=6, fill="x", ipady=6)
 
-        tk.Label(self, text="Password", bg=THEME_BG, fg=THEME_TEXT).pack(anchor="w")
-        self.password_entry = tk.Entry(self, show="*", width=32, bg="white", fg=THEME_TEXT, relief="flat")
-        self.password_entry.pack(anchor="w", pady=6, fill="x")
+        tk.Label(self, text="Password", bg=THEME_BG, fg=THEME_TEXT, font=("Arial", 10)).pack(anchor="w")
+        self.password_entry = tk.Entry(self, show="*", width=32, bg="white", fg=THEME_TEXT, insertbackground="black", relief="flat", bd=0, highlightthickness=0, font=("Arial", 10))
+        self.password_entry.pack(anchor="w", pady=6, fill="x", ipady=6)
 
-        tk.Label(self, text="Confirm Password", bg=THEME_BG, fg=THEME_TEXT).pack(anchor="w")
-        self.confirm_entry = tk.Entry(self, show="*", width=32, bg="white", fg=THEME_TEXT, relief="flat")
-        self.confirm_entry.pack(anchor="w", pady=6, fill="x")
+        tk.Label(self, text="Confirm Password", bg=THEME_BG, fg=THEME_TEXT, font=("Arial", 10)).pack(anchor="w")
+        self.confirm_entry = tk.Entry(self, show="*", width=32, bg="white", fg=THEME_TEXT, insertbackground="black", relief="flat", bd=0, highlightthickness=0, font=("Arial", 10))
+        self.confirm_entry.pack(anchor="w", pady=6, fill="x", ipady=6)
 
-        tk.Label(self, text="Mobile Number", bg=THEME_BG, fg=THEME_TEXT).pack(anchor="w")
-        self.mobile_entry = tk.Entry(self, width=32, bg="white", fg=THEME_TEXT, relief="flat")
-        self.mobile_entry.pack(anchor="w", pady=6, fill="x")
+        tk.Label(self, text="Mobile Number", bg=THEME_BG, fg=THEME_TEXT, font=("Arial", 10)).pack(anchor="w")
+        self.mobile_entry = tk.Entry(self, width=32, bg="white", fg=THEME_TEXT, insertbackground="black", relief="flat", bd=0, highlightthickness=0, font=("Arial", 10))
+        self.mobile_entry.pack(anchor="w", pady=6, fill="x", ipady=6)
 
         tk.Button(self,
                 text="Register", 
@@ -60,8 +60,10 @@ class registrationScreen(tk.Frame):
                 fg="black",
                 activebackground="#ff5c90",
                 relief="flat",
+                bd=0,
                 padx=12,
-                pady=8,
+                pady=10,
+                font=("Arial", 11, "bold"),
             ).pack(pady=18, fill="x")
         tk.Button(self, 
                 text="Back to Login",
@@ -70,8 +72,10 @@ class registrationScreen(tk.Frame):
                 fg="black",
                 activebackground="#ff5c90",
                 relief="flat",
+                bd=0,
                 padx=12,
                 pady=8,
+                font=("Arial", 11),
             ).pack(pady=18, fill="x")
     
     def register(self):
