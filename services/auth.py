@@ -2,6 +2,8 @@ from models.user import User
 from utils.helpers import *
 
 class authManager():
+    def __init__(self):
+        pass
     def register(self):
         users = load_users()
 
