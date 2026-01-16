@@ -38,6 +38,3 @@ class taskManager():
         if 0 <= task_index < len(tasks):
             tasks.pop(task_index)
             self.save_tasks(tasks)
-
-
-
