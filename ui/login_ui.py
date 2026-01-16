@@ -23,13 +23,13 @@ class loginScreen(tk.Frame):
             fg=THEME_TEXT,
         ).pack(pady=(0, 24))
 
-        tk.Label(self, text="Email", bg=THEME_BG, fg=THEME_TEXT).pack(anchor="w")
-        self.email_entry = tk.Entry(self, width=32, bg="white", fg=THEME_TEXT, relief="flat")
-        self.email_entry.pack(anchor="w", pady=6, fill="x")
+        tk.Label(self, text="Email", bg=THEME_BG, fg=THEME_TEXT, font=("Arial", 10)).pack(anchor="w")
+        self.email_entry = tk.Entry(self, width=32, bg="white", fg=THEME_TEXT, insertbackground="black", relief="flat", bd=0, highlightthickness=0, font=("Arial", 10))
+        self.email_entry.pack(anchor="w", pady=6, fill="x", ipady=6)
 
-        tk.Label(self, text="Password", bg=THEME_BG, fg=THEME_TEXT).pack(anchor="w")
-        self.password_entry = tk.Entry(self, width=32, show="*", bg="white", fg=THEME_TEXT, relief="flat")
-        self.password_entry.pack(anchor="w", pady=6, fill="x")
+        tk.Label(self, text="Password", bg=THEME_BG, fg=THEME_TEXT, font=("Arial", 10)).pack(anchor="w")
+        self.password_entry = tk.Entry(self, width=32, show="*", bg="white", fg=THEME_TEXT, insertbackground="black", relief="flat", bd=0, highlightthickness=0, font=("Arial", 10))
+        self.password_entry.pack(anchor="w", pady=6, fill="x", ipady=6)
 
         tk.Button(
             self,
@@ -39,8 +39,10 @@ class loginScreen(tk.Frame):
             fg="black",
             activebackground="#ff5c90",
             relief="flat",
+            bd=0,
             padx=12,
-            pady=8,
+            pady=10,
+            font=("Arial", 11, "bold"),
         ).pack(pady=18, fill="x")
 
         tk.Button(
@@ -51,9 +53,11 @@ class loginScreen(tk.Frame):
             fg="black",
             activebackground="#ff5c90",
             relief="flat",
+            bd=0,
             padx=12,
             pady=8,
-            ).pack(pady=5)
+            font=("Arial", 11),
+        ).pack(pady=5)
 
 
     def login(self):
