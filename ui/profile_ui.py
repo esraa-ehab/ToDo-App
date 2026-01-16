@@ -23,20 +23,20 @@ class profileScreen(tk.Frame):
             fg=THEME_TEXT,
         ).pack(pady=(0, 16), anchor="w")
 
-        tk.Label(self, text="New First Name", bg=THEME_BG, fg=THEME_TEXT).pack(anchor="w")
-        self.fname_entry = tk.Entry(self, bg="white", fg=THEME_TEXT, relief="flat")
+        tk.Label(self, text="New First Name", bg=THEME_BG, fg=THEME_TEXT, font=("Arial", 10)).pack(anchor="w")
+        self.fname_entry = tk.Entry(self, bg="white", fg=THEME_TEXT, insertbackground="black", relief="flat", bd=0, highlightthickness=0, font=("Arial", 10))
         self.fname_entry.insert(0, self.user.fname)
-        self.fname_entry.pack(anchor="w", pady=6, fill="x")
+        self.fname_entry.pack(anchor="w", pady=6, fill="x", ipady=6)
 
-        tk.Label(self, text="New Last Name", bg=THEME_BG, fg=THEME_TEXT).pack(anchor="w")
-        self.lname_entry = tk.Entry(self, bg="white", fg=THEME_TEXT, relief="flat")
+        tk.Label(self, text="New Last Name", bg=THEME_BG, fg=THEME_TEXT, font=("Arial", 10)).pack(anchor="w")
+        self.lname_entry = tk.Entry(self, bg="white", fg=THEME_TEXT, insertbackground="black", relief="flat", bd=0, highlightthickness=0, font=("Arial", 10))
         self.lname_entry.insert(0, self.user.lname)
-        self.lname_entry.pack(anchor="w", pady=6, fill="x")
+        self.lname_entry.pack(anchor="w", pady=6, fill="x", ipady=6)
 
-        tk.Label(self, text="New Phone Number", bg=THEME_BG, fg=THEME_TEXT).pack(anchor="w")
-        self.mobile_entry = tk.Entry(self, bg="white", fg=THEME_TEXT, relief="flat")
+        tk.Label(self, text="New Phone Number", bg=THEME_BG, fg=THEME_TEXT, font=("Arial", 10)).pack(anchor="w")
+        self.mobile_entry = tk.Entry(self, bg="white", fg=THEME_TEXT, insertbackground="black", relief="flat", bd=0, highlightthickness=0, font=("Arial", 10))
         self.mobile_entry.insert(0, self.user.mobile)
-        self.mobile_entry.pack(anchor="w", pady=6, fill="x")
+        self.mobile_entry.pack(anchor="w", pady=6, fill="x", ipady=6)
 
         tk.Button(
             self,
@@ -47,8 +47,10 @@ class profileScreen(tk.Frame):
             activebackground="#ff5c90",
             activeforeground="black",
             relief="flat",
+            bd=0,
             padx=12,
-            pady=8,
+            pady=10,
+            font=("Arial", 11, "bold"),
         ).pack(pady=12, fill="x")
 
         tk.Button(
@@ -60,8 +62,10 @@ class profileScreen(tk.Frame):
             activebackground="#e3b8c8",
             activeforeground=THEME_TEXT,
             relief="flat",
+            bd=0,
             padx=12,
             pady=8,
+            font=("Arial", 11),
         ).pack(fill="x")
 
     def saveChanges(self):
