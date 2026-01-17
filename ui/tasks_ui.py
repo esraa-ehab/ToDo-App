@@ -61,7 +61,7 @@ class taskDashboard(tk.Frame):
         tasks_section = tk.Frame(self, bg="#ffffff", padx=20, pady=15)
         tasks_section.pack(fill="both", expand=True, pady=10, padx=10)
         tasks_section.pack_propagate(False)
-        tasks_section.configure(height=300, width=450)
+        tasks_section.configure(height=400, width=1400)
 
         search_row = tk.Frame(tasks_section, bg="#ffffff")
         search_row.pack(fill="x", pady=(0, 12))
