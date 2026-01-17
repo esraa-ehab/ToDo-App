@@ -1,4 +1,5 @@
 from models.user import User
+from models.admin import Admin
 from utils.helpers import *
 
 class authManager():
@@ -60,7 +61,11 @@ class authManager():
                     return 
                 
                 if u["password_hash"] == hash_password(password):
-                    print("login successful")
-                    return User(**u)
+                    if u["role"] == "admin":
+                        print("login successful")
+                        return Admin(**u)
+                    else:
+                        print("login successful")
+                        return User(**u)
         print("user not found")
         return  
