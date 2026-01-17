@@ -63,6 +63,36 @@ class taskDashboard(tk.Frame):
         tasks_section.pack_propagate(False)
         tasks_section.configure(height=300, width=450)
 
+        search_row = tk.Frame(tasks_section, bg="#ffffff")
+        search_row.pack(fill="x", pady=(0, 12))
+
+        self.search_var = tk.StringVar()
+        tk.Entry(
+            search_row,
+            textvariable=self.search_var,
+            relief="flat",
+            bd=0,
+            highlightthickness=0,
+            bg="#f0f0f0",
+            fg=THEME_TEXT,
+            insertbackground="black",
+        ).pack(side="left", fill="x", expand=True, padx=(0, 8), ipady=6)
+
+        tk.Button(
+            search_row,
+            text="Search",
+            command=self.apply_filters,
+            relief="flat",
+            bd=0,
+            highlightthickness=0,
+            bg=THEME_ACCENT,
+            fg="black",
+            activebackground="#ff5c90",
+            font=("Arial", 10, "bold"),
+            padx=10,
+            pady=6,
+        ).pack(side="left")
+
         tk.Label(
             tasks_section,
             text="Your Tasks",
@@ -70,6 +100,64 @@ class taskDashboard(tk.Frame):
             bg="#ffffff",
             fg=THEME_TEXT
         ).pack(anchor="w", pady=(0, 10))
+
+        tk.Label(
+            self,
+            text="Sort by",
+            bg=THEME_BG,
+            fg=THEME_TEXT,
+            font=("Arial", 10, "bold")
+        ).pack(anchor="w", pady=(0, 2))
+        self.sort_var = tk.StringVar(value="None")
+        sort_menu = tk.OptionMenu(
+            self,
+            self.sort_var,
+            "None",
+            "Due Date",
+            "Priority",
+            "Status",
+            command=lambda _: self.apply_filters()
+        )
+        sort_menu.config(bg="white", fg=THEME_TEXT, relief="flat", bd=0, highlightthickness=0)
+        sort_menu["menu"].config(bg="white", fg=THEME_TEXT)
+        sort_menu.pack(fill="x", pady=6)
+
+        tk.Label(
+            self,
+            text="Priority filter",
+            bg=THEME_BG,
+            fg=THEME_TEXT,
+            font=("Arial", 10, "bold")
+        ).pack(anchor="w", pady=(6, 2))
+        self.priority_filter = tk.StringVar(value="All")
+        priority_menu = tk.OptionMenu(
+            self,
+            self.priority_filter,
+            "All", "Low", "Medium", "High",
+            command=lambda _: self.apply_filters()
+        )
+        priority_menu.config(bg="white", fg=THEME_TEXT, relief="flat", bd=0, highlightthickness=0)
+        priority_menu["menu"].config(bg="white", fg=THEME_TEXT)
+        priority_menu.pack(fill="x", pady=6)
+
+        tk.Label(
+            self,
+            text="Status filter",
+            bg=THEME_BG,
+            fg=THEME_TEXT,
+            font=("Arial", 10, "bold")
+        ).pack(anchor="w", pady=(6, 2))
+        self.status_filter = tk.StringVar(value="All")
+        status_menu = tk.OptionMenu(
+            self,
+            self.status_filter,
+            "All", "Pending", "Completed",
+            command=lambda _: self.apply_filters()
+        )
+        status_menu.config(bg="white", fg=THEME_TEXT, relief="flat", bd=0, highlightthickness=0)
+        status_menu["menu"].config(bg="white", fg=THEME_TEXT)
+        status_menu.pack(fill="x", pady=6)
+
 
         self.tasks_frame = tk.Frame(tasks_section, bg="#ffffff")
         self.tasks_frame.pack(fill="both", expand=True)
@@ -151,3 +239,49 @@ class taskDashboard(tk.Frame):
 
     def go_back(self):
         self.master.show_dashboard(self.user)
+
+    def apply_filters(self):
+        raw_tasks = self.task_man.get_user_tasks(self.user.id)
+        tasks = [t for _, t in raw_tasks]
+
+        query = self.search_var.get()
+        if query:
+            tasks = self.task_man.search_tasks(self.user.id, query)
+
+        tasks = [t if isinstance(t, dict) else t[1] for t in tasks]
+
+        tasks = self.task_man.filter_tasks(
+            tasks,
+            priority=self.priority_filter.get(),
+            status=self.status_filter.get()
+        )
+
+        tasks = self.task_man.sort_tasks(
+            tasks,
+            self.sort_var.get()
+        )
+
+        self.render_tasks(tasks)
+
+    def render_tasks(self, tasks):
+        for widget in self.tasks_frame.winfo_children():
+            widget.destroy()
+
+        if not tasks:
+            tk.Label(
+                self.tasks_frame,
+                text="No tasks found",
+                bg=THEME_BG,
+                fg="black"
+            ).pack()
+            return
+
+        for task in tasks:
+            tk.Button(
+                self.tasks_frame,
+                text=f"{task['title']} • {task['priority']} • {task['status']}",
+                anchor="w",
+                relief="flat",
+                bg="white",
+                command=lambda t=task: self.master.show_edit_task(t)
+            ).pack(fill="x", pady=4)
