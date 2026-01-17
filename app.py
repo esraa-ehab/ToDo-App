@@ -24,32 +24,32 @@ class App(tk.Tk):
 
     def show_login(self):
         self.clear_screen()
-        loginScreen(self).pack(expand=True)
+        loginScreen(self).pack(fill="both", expand=True)
 
     def show_dashboard(self, user):
         self.current_user = user
         self.clear_screen()
-        dashboardScreen(self, user).pack(expand=True)
+        dashboardScreen(self, user).pack(fill="both", expand=True)
 
     def show_profile(self, user):
         self.clear_screen()
-        profileScreen(self, user).pack(expand=True)
+        profileScreen(self, user).pack(fill="both", expand=True)
 
     def show_registration(self):
         self.clear_screen()
-        registrationScreen(self).pack(expand=True)
+        registrationScreen(self).pack(fill="both", expand=True)
 
     def show_tasks(self):
         self.clear_screen()
-        taskDashboard(self, self.current_user).pack(expand=True)
+        taskDashboard(self, self.current_user).pack(fill="both", expand=True)
     
     def show_add_task(self):
         self.clear_screen()
-        addTaskScreen(self, self.current_user).pack(expand=True)
+        addTaskScreen(self, self.current_user).pack(fill="both", expand=True)
 
     def show_edit_task(self, task):
         self.clear_screen()
-        editTaskScreen(self, self.current_user, task).pack(expand=True)
+        editTaskScreen(self, self.current_user, task).pack(fill="both", expand=True)
 
     def show_admin_dashboard(self, user):
         self.current_user = user

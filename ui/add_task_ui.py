@@ -18,7 +18,7 @@ class addTaskScreen(tk.Frame):
 
     def build_ui(self):
         container = tk.Frame(self, bg=THEME_BG)
-        container.pack(expand=True)
+        container.pack(fill="both", expand=True)
 
         tk.Label(
             container,
