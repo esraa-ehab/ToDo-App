@@ -2,7 +2,7 @@ import json
 import os
 from models.task import Task
 
-task_file = "tasks.json"
+task_file = "data/tasks.json"
 
 class taskManager():
     def __init__(self):
