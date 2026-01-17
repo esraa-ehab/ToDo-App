@@ -3,7 +3,7 @@ import json
 import hashlib
 from datetime import datetime
 
-user_file = "users.json"
+user_file = "data/users.json"
 
 def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()
